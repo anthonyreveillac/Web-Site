@@ -18,11 +18,11 @@
 
 
 
-/* Rend la barre transparente par défaut */
+/* Rend la barre transparente par défaut 
 .md-sidebar--primary {
   opacity: 0;
   transition: opacity 0.3s ease;
-}
+}*/
 
 /* Quand on la survole elle devient visible */
 .md-sidebar--primary:hover {
@@ -38,4 +38,8 @@
 /* Quand on la survole, elle devient visible */
 .md-sidebar--secondary:hover {
   opacity: 1;
+}
+
+.md-content p {
+  text-align: justify;
 }
