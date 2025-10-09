@@ -1,0 +1,1122 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Finance/">
+      
+      
+        <link rel="next" href="../These_Pro/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>RAG - Anthony Réveillac's webpage</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#llms-and-transformers-in-a-nutshell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Anthony Réveillac&#39;s webpage" class="md-header__button md-logo" aria-label="Anthony Réveillac's webpage" data-md-component="logo">
+      
+  <img src="../../assets/Logo_INSAToulouse.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Anthony Réveillac's webpage
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Anthony Réveillac&#39;s webpage" class="md-nav__button md-logo" aria-label="Anthony Réveillac's webpage" data-md-component="logo">
+      
+  <img src="../../assets/Logo_INSAToulouse.jpg" alt="logo">
+
+    </a>
+    Anthony Réveillac's webpage
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello the world !
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Teaching
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Teaching
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Finance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Finance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    RAG
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    RAG
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#llms-and-transformers-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs and Transformers in a nutshell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLMs and Transformers in a nutshell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-bit-of-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      A bit of history
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-emergence-of-llms-and-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The emergence of LLMs and Transformers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-attention-mechanism-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      The attention mechanism in a nutshell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM evaluation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-le-probleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      C'est quoi le problème ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hallucinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hallucinations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-of-the-training-data-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Quality" of the training data set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-of-alexandria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library of Alexandria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rag-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      The RAG architecture(s)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The RAG architecture(s)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#densesparse-retrieval-term-based-embedding-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense/sparse Retrieval - term-based / embedding retrieval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dense/sparse Retrieval - term-based / embedding retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunks-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunks and embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-retrieval-procedure-finding-the-closest-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Retrieval procedure : finding the closest hits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retriever
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-finally-what-is-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      So finally what is RAG ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-classical-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond classical RAG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond classical RAG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multimodal-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multimodal RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reality-principle-proprietary-models-vs-open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reality principle: Proprietary Models Vs. Open Source Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elements-related-to-the-evaluation-of-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements related to the evaluation of LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../These_Pro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thèse professionnelle - MSIAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#llms-and-transformers-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLMs and Transformers in a nutshell
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLMs and Transformers in a nutshell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-bit-of-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      A bit of history
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-emergence-of-llms-and-transformers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The emergence of LLMs and Transformers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-attention-mechanism-in-a-nutshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      The attention mechanism in a nutshell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM evaluation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LLM evaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-le-probleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      C'est quoi le problème ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hallucinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hallucinations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-of-the-training-data-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Quality" of the training data set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-of-alexandria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library of Alexandria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rag-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      The RAG architecture(s)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The RAG architecture(s)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#densesparse-retrieval-term-based-embedding-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dense/sparse Retrieval - term-based / embedding retrieval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dense/sparse Retrieval - term-based / embedding retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunks-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunks and embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-retrieval-procedure-finding-the-closest-hits" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Retrieval procedure : finding the closest hits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retriever" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retriever
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-finally-what-is-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      So finally what is RAG ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beyond-classical-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beyond classical RAG
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beyond classical RAG">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multimodal-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multimodal RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced RAG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reality-principle-proprietary-models-vs-open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reality principle: Proprietary Models Vs. Open Source Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elements-related-to-the-evaluation-of-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elements related to the evaluation of LLMs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>RAG</h1>
+
+<hr />
+<p>title: An introduction to the Retrieval-Augmented Generation (RAG) architecture and to the evaluation of LLMs
+author : Anthony Réveillac</p>
+<hr />
+<p>This page aims in presenting the architecture of <em>Retrieval-Augmented Generation</em> in the context of <em>Large Language Models</em> (LLM) and transformers. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Elements presented here are based on the two resources <em>Hands-On Large Language Models (J. Alammar, M. Grootendorst, O'Reilly, 2024)</em> and <em>AI ENgineering (C. Huyen), O'Reilly, 2024</em>.</p>
+</div>
+<h2 id="llms-and-transformers-in-a-nutshell">LLMs and Transformers in a nutshell</h2>
+<h3 id="a-bit-of-history">A bit of history</h3>
+<blockquote>
+<p>Cognitive mechanisms involved when learning a language remain mostly unknown; however we may commonly share a simple and striking observation: learning a language at a non-child age is a complete different experience from the one we've been through while learning our mother language. This simple observation is pretty striking (and disturbing) as modern language follow strict rules (and associated exceptions) that should make it easy to learn and handle. On the other hand during our very first years we learned the basics of a language as a social experience without pre-existing knowledge of grammar rules. This simple remark leads to the deeply confusing and counter-intuitive remark that Language is a <em>unstructured data</em>.</p>
+</blockquote>
+<p>Producing an autonomous systems dedicated to the understanding and production of language is not new and dates back to the mid of 20th century giving birth to the field of <em>Natural Programming Languages</em> (NPL). Back then, the algorithms consisted in a nested sequence of <em>if case</em> instructions relying on the grammatical rules that structuring a language. </p>
+<hr />
+<h3 id="the-emergence-of-llms-and-transformers">The emergence of LLMs and Transformers</h3>
+<blockquote>
+<p>Modern technology and especially the development of computing power adopted a completely different point of view: mimicking our early ages experience of learning language using some hidden correlations between words and context. The revolution came with <em>Large</em> Language Models (LLM) that were able to produce a form of language understanding from existing resources in a <strong>self-supervised way</strong>. <em>Large</em> models here refer to indeed the imprecise scale of these models as illustrated below (by the data given by OpenAI; recall that 1 Billion = <span class="arithmatex">\(10^{12}\)</span>):</p>
+</blockquote>
+<p><img alt="image" src="/../Images/param_GPT.png" /></p>
+<p>The size of the model is of course part of its performance in performing tasks, however the main revolution that has lead to the success of LLMs is the notion of <em>Transformer</em> and more precisely of <em>attention mechanism</em>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The breakthrough paper is the famous <em>"Attention is all you need"</em> paper by A. Aswani <em>et al.</em>, 2017.</p>
+</div>
+<h3 id="the-attention-mechanism-in-a-nutshell">The attention mechanism in a nutshell</h3>
+<p>The main concept is the notion of attention that provides a semantic knowledge to a sentence by letting the <em>context</em> enrich the representation of a given token; as follows: </p>
+<p><img alt="image" src="/../Images/Attention.png" /></p>
+<p>An important input of Alawar's team is to make this process learnable and faster (compared to RNN) with the notion of <em>Attention Head</em>;</p>
+<p><img alt="image" src="/../Images/Attention_Score.png" /></p>
+<p>finally here is the classical architecture of a <em>Transformer Block</em>:</p>
+<p><img alt="image" src="/../Images/Transformer.png" /></p>
+<hr />
+<h3 id="foundation-models">Foundation models</h3>
+<blockquote>
+<p>The transformer architecture is rich; it consists of a successive feedforward NN type layers; each of them being quite <em>large</em> in terms of number of parameters. As you have seen training (or should we say <em>tuning</em>) such systems require a huge amount of data and of compute (namely resources). As an example recall that Llama 2 was trained on 6 Trillion tokens representing a GPU cost of 5 million USD. Hence training from scratch such models leads to a scaling and means issue. This is why has emerged the call for using pre-trained models (via API or OpenSource). These models that became by now companions of our everyday life (GPT; Gemini; Llama; Claude; Deepseek; Mistral,...) are referred to <em>foundation models</em> as they may serve as a general basis for a large variety of task (with or without fine-tuning). </p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here we only refer to text models but of course all they all have been extended to <em>multimodal models</em> that is models that can handle different types of data that go beyond text (such as images, videos, ...) and that are trained on mixed inputs from these different formats.</p>
+</div>
+<h2 id="llm-evaluation">LLM evaluation</h2>
+<h3 id="cest-quoi-le-probleme"><em>C'est quoi le problème ?</em></h3>
+<blockquote>
+<p>At the end of the day, what matters most is the user experience. One can do academic research on well-used datasets to test the performance of an AI but this slightly differs from the user experience. On that regard on can distinguish different type of users with a variety of level of expertise on the task under interest. But :</p>
+</blockquote>
+<p><em>how do we evaluate the performance of a LLM ?</em></p>
+<p>This is a serious question. Of course the common issue is to evaluate the truth value of some elements of the answer (this will be related to <em>hallucinations</em> that we wil deal with in the next section) but the situation might be a bit more complex. Consider the two examples below : </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Consider a Q&amp;A task. One wants to get some input regarding the wikipedia pages of 2 <em>movies</em> : Nolan's 'Interstellar' and the documentary 'A brief history of time' which is strictly speaking a <em>documentary film</em> by Norris. To the question 'How is the science in both movies ?' with two different LLMs one gets the answers : </p>
+<ul>
+<li>LLM1 : <em>BHT is not a movie.</em></li>
+<li>LLM2 : <em>Interstellar finds sources in [...]. BHT is rather a documentary than a movie but it is based on [...].</em></li>
+</ul>
+</div>
+<p>What is the right answer ? I would say that both are correct but how could I measure this and make it less subjective ? In that cases we constrained the system to answer based on the Wikipedia pages only which clearly introduced a <em>bias</em> in our task that has been handled very differently by both systems. Another source of concern is related to this one and is referred to <strong>bias and fairness</strong> and directly questions the nature of the dataset during training.  </p>
+<h3 id="hallucinations">Hallucinations</h3>
+<p>We will come back later to the notion of evaluation; right now we focus on the notion of <em>hallucination</em> which is at the core of this course. </p>
+<blockquote>
+<p>By hallucination we mean an output of a LLM-type system in which at least one element has a truth value equal to FALSE (in other words one statement is commonly admitted as false). One distinguishes at least three types of hallucinations : </p>
+</blockquote>
+<ol>
+<li><strong>Input conflicting hallucinations:</strong> it consists in an inconsistency between the resources and the output</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>USER: <em>When was Robert Redford born ?</em></li>
+<li>SYS: <em><strong>John</strong> Redford was born in ???</em></li>
+</ul>
+</div>
+<ol>
+<li><strong>Context conflicting hallucinations:</strong> the system fails in identifying the context (usually because of a lack of memory or compute power)</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>USER: A question on the Basket player Silver </li>
+<li>SYS: Answers produces a claim that the player was silver medalist during the last olympic games.</li>
+</ul>
+</div>
+<ol>
+<li><strong>Fact conflicting hallucinations:</strong> the system creates answers whose elements are directly in conflict with facts (from inner or outer resources available to the system)</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<ul>
+<li>USER: <em>When did WW II ended ?</em></li>
+<li>SYS: <em>WW II ended with the peace treaty of November 11th 1918.</em></li>
+</ul>
+</div>
+<p>Identifying the reasons of hallucinations is not an easy task but it clearly depend on the compute power available of the system and of the <em>creativity</em> level (like the temperature parameter). However it might be possible to try to limit them; this is the <em>raison d'être</em> of RAG architectures.</p>
+<h3 id="quality-of-the-training-data-set">"Quality" of the training data set</h3>
+<p>Foundations model need a huge amount of data during the training process (recall the 'simple' first BERT has been trained over all available Wikipedia pages in 2018); guaranteeing the reliability of each of these resources is a challenge. However among all the use cases in industrial applications of foundations models one of them is to perform semantic search (that is searching by meaning and not keyword matching) or Q&amp;A within a set of resources that in contradistinction with the aforementioned training data set is build from approved resources. </p>
+<h3 id="library-of-alexandria">Library of Alexandria</h3>
+<p>LLM systems contain an impressive amount of data, but including all available source of knowledge on the web for instance seems unaccessible and also pointless. Pointless for at least two reasons. Firstly, if one need answers regarding a specific memory source that may be confidential (like health data, or clients data) this is by definition not public. On the contrary for public resources, chatbots like GPTs are able to make a research task to access the resource. So in both cases it is completely natural to include the possibility that an LLM will have to base its generated answer on external resource that it has to choose properly. The 2017 paper "Reading Wikipedia to Answer Open-Domain Questions" (Chen et al., 2017) describes this task where an LLM has to spot the right Wikipedia page given a query and then generate an answer based on the information collected in that specific page. This procedure is named <strong>retrieve-then-generate pattern</strong>. </p>
+<blockquote>
+<p>The previous technique has been refined three years later by Lewis et al. in "Retrieval-Augmented Generation for Knowledge-Intensive NLP tasks" where the retrieved information is used as an additional context to the query. This is the RAG procedure and this is what we are going to explore now. </p>
+</blockquote>
+<h2 id="the-rag-architectures">The RAG architecture(s)</h2>
+<p>The RAG architecture will be composed of two elements : a retriever component and a generative component (a decoder).</p>
+<p><img src="/../Images/RAG_Archi.png" width="1200" height="700"> </p>
+<p>Let us focus on the retrieval part.</p>
+<h3 id="densesparse-retrieval-term-based-embedding-retrieval">Dense/sparse Retrieval - term-based / embedding retrieval</h3>
+<p>Retrieving an appropriate resource within a data base dates back to the beginning of computer science and many algorithm are available for that regard. As this class is dedicated to the RAG I would say that the main contribution of Deep Learning on this question is to move from the lexical search (<em>term-based retrieval</em>) to the semantic one (<em>semantic retrieval</em>) or to put it differently from the simple "Ctrl + f" search to a query search based on the meaning. </p>
+<p>Term-based retrieval refers to all algorithms that are based on a keywords match. These algorithms usually are based on a one-hot vector type encoding. For instance each key word is encoded as a vector with all coordinates put to 0 except one which is set to 1. The dimension of each vector is then the cardinal of the vocabulary. This representation might be useful but obviously it misses the point of creating a semantic understanding. As an example is one is interested in the keyword "hot dog" the system will look for the two items "hot" and "dog" but most likely most of the hits will miss the purpose of the query. Of course some algorithms tried to come around these flaws but they still work in a different manner than the one making use of embedding that we will describe below (for instance among the most used one may recall the TF-IDF Algorithms - <em>Term Frequency</em>-<em>Inverse Document Frequency</em>). Finally let us mention that these type of algorithms are usually referred as <em>sparse retrieval</em> as the one hot vectors form a sparse data (in is original sense : most of the information is set to 0).</p>
+<p>The second approach which has been made attainable thanks to transformer technology is the one based on a semantic analysis making use of an encoder in which information is embedded in a vector space and treated using attention heads. You have seen already this approach we simple elude to it in the next lines. </p>
+<h4 id="chunks-and-embeddings">Chunks and embeddings</h4>
+<p>As mentioned one of the first application one may think of is <em>semantic search</em> which consists in looking for information based on the meaning of a query and not simply based on a keyword matching. As language may not been easily embedded into a mathematical space in spite of grammatical rules (that a Human user learn with some variable effort) we make use of the embedding strategy that you have already experienced while studying LLMs. </p>
+<p>In the classical approach of an encoder one make use of the tokenization step which splits a given text into tokens; each of this token is embedded and a vocabulary is formed. We are going to follow a similar procedure but this time we aim in embedding texts that we name <strong>chunks</strong>. In order to compare the semantic feature of different texts (chunks) we embed them into a (high dimensional) vector space to provide their vector representation. The we use a metric to transform semantic relevance as distance between the texts and the query. </p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Query : What is the capital of France ?</p>
+<p>Text 1 : Japan is a country in Asia </p>
+<p>Text 2 : Paris Hilton likes chihuahuas </p>
+<p>Text 3 : Paris is the french capital since the 6th century</p>
+</div>
+<p><img src="/../Images/Chunks_vectors.png" width="700" height="700"> </p>
+<p>Another important issue is the chunking procedure. Indeed, the splitting strategy will be of interest since as an input we have documents (resources) that need to be embedded on a vector space (even for very high dimensional spaces giving somehow a semantic score to a block of sentences might be pointless); and at the end of the day one need to spot the precise information related to the query. The procedure reads as follows : </p>
+<p><img src="/../Images/Dense_retrieval.png" width="1200" height="700"></p>
+<p>Hence if we come back to the architecture we can make precise some elements by including the vector database.</p>
+<p><img src="/../Images/Vector_DB.png" width="1300" height="800"></p>
+<h4 id="the-retrieval-procedure-finding-the-closest-hits">The Retrieval procedure : finding the closest hits</h4>
+<h4 id="index">Index</h4>
+<p>Once we have a database (which takes the form of a vector database) one can embed the query and find within the database the closest elements related to the query. This is the role of the <strong>index</strong>. A database would be point less if it wouldn't be associated to a search device for which an index, that is a way to sort and store the data is crucial. Hence, when a new chunk is introduced to the base, it is embedded and the corresponding vector is indexed. </p>
+<h4 id="retriever">Retriever</h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Close but how close ?!</p>
+</div>
+<blockquote>
+<p>Obviously the closest result might not be the good one (if all the resources we have deal with Paris the mythologic character of the Trojan war or with Paris Hilton all these search will not answer the query). This is why usually semantic search systems will be based on a fundamental component the <strong>search index</strong> which is also trained in Q&amp;A task to improve performances on finding the closest results. Searching within a vector base is a task which goes beyond the RAG tech and many algorithms have been developed since decades for various purposes. In our case we will make use of the FAISS (Facebook AI Similarity Search) library (developed by Johnson et al. 2017).</p>
+</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We eluded to the evaluation of LLM and the quality of the indexing and retrieval could deeply impact that. Some metrics are dedicated to this aspect : <em>Context precision</em> and <em>Context recall</em> we will come back to this during the lab session. </p>
+</div>
+<h3 id="so-finally-what-is-rag">So finally what is RAG ?</h3>
+<p>We now have all the ingredients to define the RAG architecture, which reads as follows : enrich the context of the query to get a semantic enriched response.</p>
+<p><img src="/../Images/RAG.png" width="1200" height="800"></p>
+<h2 id="beyond-classical-rag">Beyond classical RAG</h2>
+<h3 id="multimodal-rag">Multimodal RAG</h3>
+<p>LLM allow to deal with several types of inputs (usually text, images, vidéos,...), it is possible to extend then the RAG technology to several type of resources.</p>
+<h3 id="advanced-rag">Advanced RAG</h3>
+<p>The objective of RAG is to increase the context; but the choice of this context relies on the retrieval module (that is the index). One can increase the quality of retrieval by additional steps like presented below:</p>
+<p><img src="/../Images/Advanced_RAG.png" width="1200" height="800"></p>
+<p><img src="/../Images/Advanced_RAG_Bis.png" width="1200" height="800"></p>
+<p>Among these improvements we point out the notion of <strong>reranking</strong>. Once the retrieved documents are available they come with a score (which translates the similarity with the query). But this ranking might not be the best one. To increase the semantic analysis/comparison between the query and the retrieved documents on may make use of a co-called <em>cross-encoder</em> that is another LLM to which it is asked to <strong>rerank</strong> the retrieved documents according to the query. This reranking in practice improves the quality of the retrieval and it may also reduce the number of retrieved documents. Then the rest of the pipeline is unchanged: the re-ranked documents are passed to the decoder together with the query. </p>
+<h3 id="reality-principle-proprietary-models-vs-open-source-models">Reality principle: Proprietary Models Vs. Open Source Models</h3>
+<p>We will discuss the matter during the Lab session but if one makes use of Open Source Models one should be concerned with (VRAM) memory issues. Indeed, loading an Open Source model requires a huge VRAM capacity. </p>
+<p><img src="/../Images/VRAM.png" width="1300" height="1000"></p>
+<p>Adding RAG and an index will of course increase the need of larger memory load.</p>
+<h3 id="elements-related-to-the-evaluation-of-llms">Elements related to the evaluation of LLMs</h3>
+<p>This was somehow our original motivation: how to go beyond a user experience and how to rely on objective grounded elements to evaluate the performance of a LLM ? We are unfortunately not in position to answer this question, however we can now add new inputs to it. To do so we recall metrics (that are for instance provided in the <a href="https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/">RAGS</a> library). These metrics are based on the comparison (and the use) of the elements : 
+- the query
+- the reference (the documents available)
+- the retrieved context (retrieved documents)
+- the expected answer (if available)
+- the response</p>
+<p>The the metrics aim in measuring how the response is built from these elements; </p>
+<p><img src="/../Images/RAGAS_Tab.png" width="1300" height="1000"></p>
+<p>For example Metric "Faithfulness" comparee <em>Response</em> with <em>Retried Context</em> (in other words it aims in addressing the question <em>To which extend the response is based on the RC ?</em>)</p>
+<figure>
+  <img src="/../Images/RAGAS.png" alt="Image description" width="500" height="800">
+  <figcaption>Source: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/.</figcaption>
+</figure>
+
+<p>We will (if time allows) test these metrics during the Lab. This is the end of this introduction to RAG.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

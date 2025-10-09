@@ -1,0 +1,21 @@
+site_name: Anthony Réveillac's webpage
+theme:
+  name: material
+  logo : assets/Logo_INSAToulouse.jpg 
+
+extra_css:
+  - stylesheets/style.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+markdown_extensions:
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.superfences 
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - js/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+

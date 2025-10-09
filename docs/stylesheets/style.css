@@ -1,0 +1,45 @@
+:root {
+  --md-primary-fg-color: #394A59;
+  --md-accent-fg-color:  #556567;
+}
+
+/* --- Barre latérale fine --- */
+.md-sidebar--primary {
+  width: 180px;           /* largeur de la barre */
+}
+
+/* --- Zone centrale très large --- */
+.md-content {
+  max-width: none;        /* supprime la limite de largeur du thème */
+  width: calc(100% - 180px); /* tout l’écran moins la barre */
+  margin-left: 0px;     /* décale le texte pour ne pas passer sous la barre */
+  padding-right: 0rem;    /* un peu d’air à droite */
+}
+
+
+
+/* Rend la barre transparente par défaut 
+.md-sidebar--primary {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}*/
+
+/* Quand on la survole elle devient visible */
+.md-sidebar--primary:hover {
+  opacity: 1;
+}
+
+/* Rend la barre de droite transparente par défaut */
+.md-sidebar--secondary {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Quand on la survole, elle devient visible */
+.md-sidebar--secondary:hover {
+  opacity: 1;
+}
+
+.md-content p {
+  text-align: justify;
+}
