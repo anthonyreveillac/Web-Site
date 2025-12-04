@@ -941,7 +941,6 @@
 </blockquote>
 <h2 id="the-rag-architectures">The RAG architecture(s)</h2>
 <p>The RAG architecture will be composed of two elements : a retriever component and a generative component (a decoder).</p>
-<p><img src="/../Docs/Images/RAG_Archi.png" width="1200" height="700"> </p>
 <p><img alt="image" src="../../Images/RAG_Archi.png" /></p>
 <p>Let us focus on the retrieval part.</p>
 <h3 id="densesparse-retrieval-term-based-embedding-retrieval">Dense/sparse Retrieval - term-based / embedding retrieval</h3>
@@ -958,11 +957,11 @@
 <p>Text 2 : Paris Hilton likes chihuahuas </p>
 <p>Text 3 : Paris is the french capital since the 6th century</p>
 </div>
-<p><img src="/../Images/Chunks_vectors.png" width="700" height="700"> </p>
+<p><img alt="image" src="../../Images/Chunks_vectors.png" /></p>
 <p>Another important issue is the chunking procedure. Indeed, the splitting strategy will be of interest since as an input we have documents (resources) that need to be embedded on a vector space (even for very high dimensional spaces giving somehow a semantic score to a block of sentences might be pointless); and at the end of the day one need to spot the precise information related to the query. The procedure reads as follows : </p>
-<p><img src="/../Images/Dense_retrieval.png" width="1200" height="700"></p>
+<p><img alt="image" src="../../Images/Dense_retrieval.png" /></p>
 <p>Hence if we come back to the architecture we can make precise some elements by including the vector database.</p>
-<p><img src="/../Images/Vector_DB.png" width="1300" height="800"></p>
+<p><img alt="image" src="../../Images/Vector_DB.png" /></p>
 <h4 id="the-retrieval-procedure-finding-the-closest-hits">The Retrieval procedure : finding the closest hits</h4>
 <h4 id="index">Index</h4>
 <p>Once we have a database (which takes the form of a vector database) one can embed the query and find within the database the closest elements related to the query. This is the role of the <strong>index</strong>. A database would be point less if it wouldn't be associated to a search device for which an index, that is a way to sort and store the data is crucial. Hence, when a new chunk is introduced to the base, it is embedded and the corresponding vector is indexed. </p>
@@ -980,18 +979,18 @@
 </div>
 <h3 id="so-finally-what-is-rag">So finally what is RAG ?</h3>
 <p>We now have all the ingredients to define the RAG architecture, which reads as follows : enrich the context of the query to get a semantic enriched response.</p>
-<p><img src="/../Images/RAG.png" width="1200" height="800"></p>
+<p><img alt="image" src="../../Images/RAG.png" /></p>
 <h2 id="beyond-classical-rag">Beyond classical RAG</h2>
 <h3 id="multimodal-rag">Multimodal RAG</h3>
 <p>LLM allow to deal with several types of inputs (usually text, images, vidéos,...), it is possible to extend then the RAG technology to several type of resources.</p>
 <h3 id="advanced-rag">Advanced RAG</h3>
 <p>The objective of RAG is to increase the context; but the choice of this context relies on the retrieval module (that is the index). One can increase the quality of retrieval by additional steps like presented below:</p>
-<p><img src="/../Images/Advanced_RAG.png" width="1200" height="800"></p>
-<p><img src="/../Images/Advanced_RAG_Bis.png" width="1200" height="800"></p>
+<p><img alt="image" src="../../Images/Advanced_RAG.png" /></p>
+<p><img alt="image" src="../../Images/Advanced_RAG_Bis.png" /></p>
 <p>Among these improvements we point out the notion of <strong>reranking</strong>. Once the retrieved documents are available they come with a score (which translates the similarity with the query). But this ranking might not be the best one. To increase the semantic analysis/comparison between the query and the retrieved documents on may make use of a co-called <em>cross-encoder</em> that is another LLM to which it is asked to <strong>rerank</strong> the retrieved documents according to the query. This reranking in practice improves the quality of the retrieval and it may also reduce the number of retrieved documents. Then the rest of the pipeline is unchanged: the re-ranked documents are passed to the decoder together with the query. </p>
 <h3 id="reality-principle-proprietary-models-vs-open-source-models">Reality principle: Proprietary Models Vs. Open Source Models</h3>
 <p>We will discuss the matter during the Lab session but if one makes use of Open Source Models one should be concerned with (VRAM) memory issues. Indeed, loading an Open Source model requires a huge VRAM capacity. </p>
-<p><img src="/../Images/VRAM.png" width="1300" height="1000"></p>
+<p><img alt="image" src="../../Images/VRAM.png" /></p>
 <p>Adding RAG and an index will of course increase the need of larger memory load.</p>
 <h3 id="elements-related-to-the-evaluation-of-llms">Elements related to the evaluation of LLMs</h3>
 <p>This was somehow our original motivation: how to go beyond a user experience and how to rely on objective grounded elements to evaluate the performance of a LLM ? We are unfortunately not in position to answer this question, however we can now add new inputs to it. To do so we recall metrics (that are for instance provided in the <a href="https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/">RAGS</a> library). These metrics are based on the comparison (and the use) of the elements : 
@@ -1001,13 +1000,12 @@
 - the expected answer (if available)
 - the response</p>
 <p>The the metrics aim in measuring how the response is built from these elements; </p>
-<p><img src="/../Images/RAGAS_Tab.png" width="1300" height="1000"></p>
-<p>For example Metric "Faithfulness" comparee <em>Response</em> with <em>Retried Context</em> (in other words it aims in addressing the question <em>To which extend the response is based on the RC ?</em>)</p>
-<figure>
-  <img src="/../Images/RAGAS.png" alt="Image description" width="500" height="800">
-  <figcaption>Source: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/.</figcaption>
-</figure>
-
+<p><img alt="image" src="../../Images/RAGAS_Tab.png" /></p>
+<p>For example Metric "Faithfulness" compare <em>Response</em> with <em>Retried Context</em> (in other words it aims in addressing the question <em>To which extend the response is based on the RC ?</em>)</p>
+<p><img alt="image" src="../../Images/RAGAS.png" />
+<br />
+<figcaption>Source: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/.</figcaption>
+</p>
 <p>We will (if time allows) test these metrics during the Lab. This is the end of this introduction to RAG.</p>
 
 
