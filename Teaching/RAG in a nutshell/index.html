@@ -10,8 +10,6 @@
         <meta name="author" content="Anthony Réveillac">
       
       
-        <link rel="canonical" href="https://anthonyreveillac.github.io/Web-Site/Teaching/RAG%20in%20a%20nutshell/">
-      
       
         <link rel="prev" href="../..">
       
@@ -1043,10 +1041,7 @@
 <blockquote>
 <p>Modern technology and especially the development of computing power adopted a completely different point of view: mimicking our early ages experience of learning language using some hidden correlations between words and context. The revolution came with <em>Large</em> Language Models (LLM) that were able to produce a form of language understanding from existing resources in a <strong>self-supervised way</strong>. <em>Large</em> models here refer to indeed the imprecise scale of these models as illustrated below (by the data given by OpenAI; recall that 1 Billion = <span class="arithmatex">\(10^{12}\)</span>):</p>
 </blockquote>
-<div style="text-align: center;">
-  <img src="/Images/param_GPT.png">
-</div>
-
+<p><img alt="image" src="../../Images/param_GPT.png" /></p>
 <p>The size of the model is of course part of its performance in performing tasks, however the main revolution that has lead to the success of LLMs is the notion of <em>Transformer</em> and more precisely of <em>attention mechanism</em>. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1058,7 +1053,7 @@
 <p>An important input of Alawar's team is to make this process learnable and faster (compared to RNN) with the notion of <em>Attention Head</em>;</p>
 <p><img alt="image" src="../../Images/Attention_Score.png" /></p>
 <p>finally here is the classical architecture of a <em>Transformer Block</em>:</p>
-<h2 id="_1"><img src="/Images/Transformer.png" width="500"></h2>
+<h2 id="_1"><img alt="image" src="../../Images/Transformer.png" /></h2>
 <h3 id="foundation-models">Foundation models</h3>
 <blockquote>
 <p>The transformer architecture is rich; it consists of a successive feedforward NN type layers; each of them being quite <em>large</em> in terms of number of parameters. As you have seen training (or should we say <em>tuning</em>) such systems require a huge amount of data and of compute (namely resources). As an example recall that Llama 2 was trained on 6 Trillion tokens representing a GPU cost of 5 million USD. Hence training from scratch such models leads to a scaling and means issue. This is why has emerged the call for using pre-trained models (via API or OpenSource). These models that became by now companions of our everyday life (GPT; Gemini; Llama; Claude; Deepseek; Mistral,...) are referred to <em>foundation models</em> as they may serve as a general basis for a large variety of task (with or without fine-tuning). </p>
@@ -1220,7 +1215,7 @@
 <p>LLM allow to deal with several types of inputs (usually text, images, vidéos,...), it is possible to extend then the RAG technology to several type of resources (which are unstructured data) each of which is called a <em>modality</em>.</p>
 <h4 id="vision-transformers-vit">Vision Transformers (ViT)</h4>
 <p>For instance <strong>Vision Transformers (ViT)</strong> consist of the text transformers that we have seen before but with input data given by images. ViT are then used as textual-transformers for various tasks like as below for a two classes classification task:</p>
-<p><img src="/Images/ViT.png" width="900""/></p>
+<p><img alt="image" src="../../Images/ViT.png" /></p>
 <p>How do we deal with these unstructured data ? We mimic what is done for textual data starting with a tokenization procedure which for images reads as <strong>patching</strong> with patches transformed into a sequence of elements named a <strong>flattened input</strong>. </p>
 <blockquote>
 <p>Each input is represented as a vector. As an example, consider an image with 3 channels of size 32 x 32. This image is split in patches of size 8x8. So there will be 16 patches. Each patch will be <em>flattened</em> to a vector of dimension <span class="arithmatex">\(8\)</span>x<span class="arithmatex">\(8\)</span>x<span class="arithmatex">\(3\)</span> so <span class="arithmatex">\(192\)</span>.</p>
