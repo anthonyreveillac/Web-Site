@@ -10,6 +10,8 @@
         <meta name="author" content="Anthony Réveillac">
       
       
+        <link rel="canonical" href="https://anthonyreveillac.github.io/Web-Site/Teaching/Teaching/RAG%20in%20a%20nutshell/">
+      
       
         <link rel="prev" href="../..">
       
@@ -1218,7 +1220,7 @@
 <p>LLM allow to deal with several types of inputs (usually text, images, vidéos,...), it is possible to extend then the RAG technology to several type of resources (which are unstructured data) each of which is called a <em>modality</em>.</p>
 <h4 id="vision-transformers-vit">Vision Transformers (ViT)</h4>
 <p>For instance <strong>Vision Transformers (ViT)</strong> consist of the text transformers that we have seen before but with input data given by images. ViT are then used as textual-transformers for various tasks like as below for a two classes classification task:</p>
-<p><img src="/Images/ViT.png" width="900" height="100"/></p>
+<p><img src="/Images/ViT.png" width="900""/></p>
 <p>How do we deal with these unstructured data ? We mimic what is done for textual data starting with a tokenization procedure which for images reads as <strong>patching</strong> with patches transformed into a sequence of elements named a <strong>flattened input</strong>. </p>
 <blockquote>
 <p>Each input is represented as a vector. As an example, consider an image with 3 channels of size 32 x 32. This image is split in patches of size 8x8. So there will be 16 patches. Each patch will be <em>flattened</em> to a vector of dimension <span class="arithmatex">\(8\)</span>x<span class="arithmatex">\(8\)</span>x<span class="arithmatex">\(3\)</span> so <span class="arithmatex">\(192\)</span>.</p>

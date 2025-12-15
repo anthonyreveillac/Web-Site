@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://anthonyreveillac.github.io/Web-Site/Teaching/</loc>
+         <lastmod>2025-12-15</lastmod>
+    </url>
+    <url>
+         <loc>https://anthonyreveillac.github.io/Web-Site/Teaching/Teaching/RAG%20in%20a%20nutshell/</loc>
+         <lastmod>2025-12-15</lastmod>
+    </url>
+    <url>
+         <loc>https://anthonyreveillac.github.io/Web-Site/Teaching/Teaching/These_Pro/</loc>
+         <lastmod>2025-12-15</lastmod>
+    </url>
 </urlset>
